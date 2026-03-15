@@ -18,8 +18,8 @@ internal class BorrowService : IBorrowService
         try
         {
             var book = await _context.Books.FindAsync(bookId);
-            if (book == null) return false;
-            
+            if (book == null || !book.IsAvailable) return false;
+
             book.IsAvailable = false;
 
             await _context.SaveChangesAsync();
