@@ -22,6 +22,13 @@ internal class BorrowService : IBorrowService
 
             book.IsAvailable = false;
 
+            _context.Borrowings.Add(new Borrowing
+            {
+                BookId = bookId,
+                UserId = userId,
+                BorrowedAt = DateTime.UtcNow
+            });
+
             await _context.SaveChangesAsync();
             await transaction.CommitAsync();
             return true;

@@ -2,5 +2,5 @@
 
 internal interface IReturnService
 {
-    Task<bool> ReturnBookAsync(int bookId);
+    Task<bool> ReturnBookAsync(int bookId, int userId);
 }
