@@ -7,7 +7,6 @@ internal class Program
     {
         DatabaseInitializer.Initialize();
 
-
         using var db = new LibraryContext();
 
         db.Database.EnsureCreated();
@@ -43,10 +42,7 @@ internal class Program
         Console.WriteLine($"[TEST] Wyniki (powinno być 1 sukces, 1 porażka): Sukcesy={conflictResults.Count(r => r)}, Porażki={conflictResults.Count(r => !r)}");
 
         // TEST 4: Pełny cykl życia 10 książek (wypożycz → oddaj → wypożycz)
-        Console.WriteLine("\n=== TEST 4: Pełny cykl życia 10 książek ===");
-
-        // Faza 1: 50 użytkowników równocześnie, 10 dostępnych książek (ID 5–14)
-        Console.WriteLine("\n[Faza 1] 50 użytkowników próbuje wypożyczyć 10 książek...");
+        Console.WriteLine("\n=== TEST");
         var cycleTasks = new List<Task<(int userId, int bookId, bool result)>>();
         for (int i = 0; i < 50; i++)
         {
